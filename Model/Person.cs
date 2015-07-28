@@ -17,9 +17,9 @@ namespace SqliteEF7.Model
     public class PersonContext : DbContext
     {
         public DbSet<Person> Persons { get; set; }
-        protected override void OnConfiguring(DbContextOptions options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            options.UseSQLite("Data Source=CropsDB.sqlite");
+            optionsBuilder.UseSqlite("Data Source=CropsDB.sqlite");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

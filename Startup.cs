@@ -26,19 +26,11 @@ namespace SqliteEF7
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            //--> This should be working
+            //--> YAAAAASSSSSSSS!
             using (var db = new PersonContext())
             {
                 db.Database.EnsureCreated();
             }
-            /*   But it's giving me :
-                 Could not load file or assembly 'Microsoft.Framework.Logging.ILogger, 
-                                                  Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' 
-                                                  or one of its dependencies. The system cannot find the 
-                 I'm suspecting a versioning issue in project.json.
-                 I tried changing to "EntityFramework.SQLite": "7.0.0-beta5" with no luck.
-                 I've also changed versions on other packages but it ended up breaking mvc6 functionality.
-            */
         }
 
         public IConfiguration Configuration { get; set; }
@@ -65,7 +57,8 @@ namespace SqliteEF7
             // Add the following to the request pipeline only in development environment.
             if (env.IsDevelopment())
             {
-                app.UseErrorPage(ErrorPageOptions.ShowAll);
+                //Probably another way to implement this.
+                //app.UseErrorPage(ErrorPageOptions.ShowAll);
             }
             else
             {
